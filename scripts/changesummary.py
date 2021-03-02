@@ -330,11 +330,12 @@ class ChangeSummary:
         """
 
         # Build the conventional commit string based on the arguments provided
-        commit_type = "feat" if is_feature else "fix"
-        breaking_change_char = "!" if is_breaking else ""
-        return "{0}({1}){2}: update the api".format(
-            commit_type, api_name, breaking_change_char
-        )
+        # commit_type = "feat" if is_feature else "fix"
+        # breaking_change_char = "!" if is_breaking else ""
+        # return "{0}({1}){2}: update the api".format(
+        #     commit_type, api_name, breaking_change_char
+        # )
+        return "chore({0}): update the api".format(api_name)
 
     def _get_keys_to_ignore(self):
         """Returns keys to ignore as an array of strings. # Filter out keys

@@ -80,23 +80,23 @@ if __name__ == "__main__":
     )
 
     with open(os.path.join(directory, "allapis.summary"), "w") as f:
-        if len(stable_and_breaking) > 0:
-            f.writelines(
-                [
-                    "## Breaking changes were detected in the following stable APIs:\n",
-                    "\n".join(stable_and_breaking),
-                    "\n\n",
-                ]
-            )
+        # if len(stable_and_breaking) > 0:
+        #     f.writelines(
+        #         [
+        #             "## Breaking changes were detected in the following stable APIs:\n",
+        #             "\n".join(stable_and_breaking),
+        #             "\n\n",
+        #         ]
+        #     )
 
-        if len(prestable_and_breaking) > 0:
-            f.writelines(
-                [
-                    "## Breaking changes were detected in the following pre-stable APIs:\n",
-                    "\n".join(prestable_and_breaking),
-                    "\n\n",
-                ]
-            )
+        # if len(prestable_and_breaking) > 0:
+        #     f.writelines(
+        #         [
+        #             "## Breaking changes were detected in the following pre-stable APIs:\n",
+        #             "\n".join(prestable_and_breaking),
+        #             "\n\n",
+        #         ]
+        #     )
 
         if len(all_apis) > 0:
             f.writelines(
