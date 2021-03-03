@@ -20,10 +20,17 @@ while read api;
 do
     name=`echo $api | cut -d '.' -f 1`
     API_SUMMARY_PATH=temp/$name.verbose
-    if [[ -f "$API_SUMMARY_PATH" && ! -f "temp/$name.sha" ]]; then
+
+    if [[ ! -f "temp/$name.sha" ]]; then
         git add 'googleapiclient/discovery_cache/documents/'$name'.*.json'
         git add 'docs/dyn/'$name'_*.html'
-        commitmsg=`cat $API_SUMMARY_PATH`
+
+        if [[ -f "$API_SUMMARY_PATH" ]]; then
+            commitmsg=`cat $API_SUMMARY_PATH`
+        else
+            commitmsg='chore('$name'): update the api'
+        fi
+
         git commit 'googleapiclient/discovery_cache/documents/'$name'.*.json' 'docs/dyn/'$name'_*.html' -m "$commitmsg"
         git rev-parse HEAD>temp/$name'.sha'
     fi

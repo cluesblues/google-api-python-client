@@ -288,11 +288,11 @@ class ChangeSummary:
         # Filter out keys which appear to be less important such as:
         # {"description", "documentation", "enum", "etag", "revision", "title",
         # "url", "rootUrl"}
-        docs_diff = docs_diff[
-            ~docs_diff["Key"].str.contains(
-                "|".join(self._get_keys_to_ignore()), case=False
-            )
-        ]
+        # docs_diff = docs_diff[
+        #     ~docs_diff["Key"].str.contains(
+        #         "|".join(self._get_keys_to_ignore()), case=False
+        #     )
+        # ]
 
         # Group keys with similar parents together and create a new column
         # called 'Count' which indicates the number of keys that have been
@@ -337,23 +337,23 @@ class ChangeSummary:
         # )
         return "chore({0}): update the api".format(api_name)
 
-    def _get_keys_to_ignore(self):
-        """Returns keys to ignore as an array of strings. # Filter out keys
-            which appear to be less important.
+    # def _get_keys_to_ignore(self):
+    #     """Returns keys to ignore as an array of strings. # Filter out keys
+    #         which appear to be less important.
 
-        args: None
-        """
-        keys_to_ignore = [
-            "description",
-            "documentation",
-            "enum",
-            "etag",
-            "revision",
-            "title",
-            "url",
-            "rootUrl",
-        ]
-        return keys_to_ignore
+    #     args: None
+    #     """
+    #     keys_to_ignore = [
+    #         "description",
+    #         "documentation",
+    #         "enum",
+    #         "etag",
+    #         "revision",
+    #         "title",
+    #         "url",
+    #         "rootUrl",
+    #     ]
+    #     return keys_to_ignore
 
     def _get_summary_and_write_to_disk(self, dataframe, directory):
         """Writes summary information to file about changes made to discovery
